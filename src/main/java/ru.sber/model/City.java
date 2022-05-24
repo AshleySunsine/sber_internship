@@ -1,11 +1,11 @@
-package ru.sber.csvreader;
+package ru.sber.model;
 
 public class City {
-   private long id;
+   private long id = 0;
    private String name;
    private String region;
    private String district;
-   private long population;
+   private long population = 0;
    private String foundation;
 
 

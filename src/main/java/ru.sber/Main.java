@@ -1,7 +1,8 @@
 package ru.sber;
 
-import ru.sber.csvreader.City;
+import ru.sber.model.City;
 import ru.sber.csvreader.CsvReader;
+import ru.sber.search.Searcher;
 import ru.sber.sort.SortCities;
 
 import java.util.List;
@@ -17,6 +18,11 @@ public class Main {
         sortCities.sortByDistrictThenByName();
         sortCities.printSortedByName();
         sortCities.printSortedByDistrictThenByName();
+
+        Searcher searcher = new Searcher();
+        City cityMaxPopulation = searcher.search(cities);
+        System.out.println("Город с максимальным населением: ");
+        System.out.println("[" + cityMaxPopulation.getId() + "] = " + cityMaxPopulation.getPopulation());
     }
 
 }

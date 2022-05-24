@@ -1,5 +1,7 @@
 package ru.sber.csvreader;
 
+import ru.sber.model.City;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;

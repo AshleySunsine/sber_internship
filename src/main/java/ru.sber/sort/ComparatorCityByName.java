@@ -1,6 +1,6 @@
 package ru.sber.sort;
 
-import ru.sber.csvreader.City;
+import ru.sber.model.City;
 
 import java.util.Comparator;
 

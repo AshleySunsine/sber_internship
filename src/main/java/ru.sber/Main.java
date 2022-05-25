@@ -5,11 +5,12 @@ import ru.sber.csvreader.CsvReader;
 import ru.sber.search.Searcher;
 import ru.sber.sort.SortCities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        CsvReader cityParser = new CsvReader();
+        /*CsvReader cityParser = new CsvReader();
         List<City> cities = cityParser.parse("data/city_ru.csv");
         cityParser.printList(cities);
 
@@ -22,7 +23,10 @@ public class Main {
         Searcher searcher = new Searcher();
         City cityMaxPopulation = searcher.search(cities);
         System.out.println("Город с максимальным населением: ");
-        System.out.println("[" + cityMaxPopulation.getId() + "] = " + cityMaxPopulation.getPopulation());
+        System.out.println("[" + cityMaxPopulation.getId() + "] = " + cityMaxPopulation.getPopulation());*/
+
+        Searcher searcher = new Searcher();
+        searcher.open("data/dataForEx3.pages");
     }
 
 }

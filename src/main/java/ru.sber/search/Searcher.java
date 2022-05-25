@@ -1,13 +1,21 @@
 package ru.sber.search;
 
-import com.drew.metadata.Metadata;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.mime.MediaType;
+import org.apache.tika.parser.AutoDetectParser;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.iwork.IWorkPackageParser;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.ext.DefaultHandler2;
 import ru.sber.model.City;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 public class Searcher {
@@ -33,19 +41,20 @@ public class Searcher {
                             ));
         }
 
-
         try (InputStream input = new FileInputStream(fileIn)) {
-            org.apache.tika.parser.ParseContext parseContext;
-            parseContext.set(Parser.class, new AutoDetectParser());
             IWorkPackageParser iWorkParser = new IWorkPackageParser();
+            ParseContext parseContext = new ParseContext();
+            parseContext.set(Parser.class, new AutoDetectParser());
             Metadata metadata = new Metadata();
-            PagesContentHandler handler = new PagesContentHandler();
+            ContentHandler handler = new BodyContentHandler();
             iWorkParser.parse(input, handler, metadata, parseContext);
 
+            List<String> metadataKeys = Arrays.asList(metadata.names());
+            metadataKeys.stream().forEach(System.out::println);
 
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            //System.out.println(iWorkParser.getSupportedTypes(parseContext));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

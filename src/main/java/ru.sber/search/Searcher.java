@@ -33,7 +33,7 @@ public class Searcher {
         return cities.get(idMaxCity);
     }
 
-    public void open(String file) {
+   /* public void open(String file) {
         File fileIn = Paths.get(file).toFile();
         if (!fileIn.exists()) {
             throw new IllegalArgumentException(
@@ -44,7 +44,6 @@ public class Searcher {
         try (InputStream input = new FileInputStream(fileIn)) {
             IWorkPackageParser iWorkParser = new IWorkPackageParser();
             ParseContext parseContext = new ParseContext();
-            parseContext.set(Parser.class, new AutoDetectParser());
             Metadata metadata = new Metadata();
             ContentHandler handler = new BodyContentHandler();
             iWorkParser.parse(input, handler, metadata, parseContext);
@@ -52,11 +51,10 @@ public class Searcher {
             List<String> metadataKeys = Arrays.asList(metadata.names());
             metadataKeys.stream().forEach(System.out::println);
 
-            //System.out.println(iWorkParser.getSupportedTypes(parseContext));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
 }
